@@ -7,12 +7,13 @@ CHAPTER_LIST = chapter1,chapter2
 #/config.mk
 
 LATEX_ARGS = -output-directory ${BUILD_DIRECTORY}
+MK_BUILD_DIRECTORY = mkdir -p ${BUILD_DIRECTORY}
 
-fhtex.pdf: */*.tex build_directory
+${PROJECT_NAME}.pdf: */*.tex
+	${MK_BUILD_DIRECTORY} ; \
 	pdflatex ${LATEX_ARGS} ${MAIN_DIRECTORY}/${PROJECT_NAME}.tex ; \
 		mv ${BUILD_DIRECTORY}/*.pdf ./
 
-
-.PHONY: build_directory
-build_directory:
-	mkdir -p ${BUILD_DIRECTORY}
+.PHONY: clean
+clean:
+	rm -r ${BUILD_DIRECTORY} ${PROJECT_NAME}
