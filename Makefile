@@ -8,7 +8,7 @@ CHAPTER_LIST = chapter1,chapter2
 
 LATEX_ARGS = -output-directory ${BUILD_DIRECTORY}
 
-fhtex.pdf: */*.tex
+fhtex.pdf: */*.tex build_directory
 	pdflatex ${LATEX_ARGS} ${MAIN_DIRECTORY}/${PROJECT_NAME}.tex ; \
 		mv ${BUILD_DIRECTORY}/*.pdf ./
 
